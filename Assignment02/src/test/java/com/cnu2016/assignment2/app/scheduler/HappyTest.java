@@ -39,6 +39,10 @@ public class HappyTest {
         assertEquals(scheduler.getCurrentTime(), 4);
     }
     
+    /**
+     * Tests the file read to input events into the system
+     * (only for a happy test case)
+     */
     @Test
     public void fileHappyTestCase() {
         HomeController homeController = HomeController.getInstance();
