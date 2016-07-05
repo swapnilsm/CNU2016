@@ -27,10 +27,6 @@ public abstract class Appliance {
         return this.name;
     }
     
-    public void setName(String name) {
-        this.name = name;
-    }
-    
     public void displayStatus() {
         System.out.println("Appliance " + this.name + " is " + this.state);
     }

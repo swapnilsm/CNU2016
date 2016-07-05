@@ -9,20 +9,23 @@ import com.cnu2016.assignment2.app.appliances.CookingOven;
 import com.cnu2016.assignment2.app.appliances.WaterHeater;
 
 /**
- * HomeController class is used to read events and schedule them
- * and displays the status of all appliances
+ * HomeController is a singleton class is used to read events and 
+ * schedule them and displays the status of all appliances.
+ * 
+ * Since we only want one instance of HomeController to keep track of
+ * and manage all home appliances, we do not want multiple instances
  */
 public class HomeController {
     /**
      * Maps the names of appliances to their object instances
      */
     private HashMap<String, Appliance> applianceMap;
-    
+    private static HomeController homeController;
     /**
      * Initializes appliance map by mapping names of appliances
      * to their respective Appliance object instances
      */
-    public HomeController() {
+    private HomeController() {
         applianceMap = new HashMap<String, Appliance>();
         AirConditioner airConditioner = new AirConditioner();
         applianceMap.put(airConditioner.getName(), airConditioner);
@@ -32,6 +35,20 @@ public class HomeController {
         
         WaterHeater waterHeater = new WaterHeater();
         applianceMap.put(waterHeater.getName(), new WaterHeater());
+    }
+    
+    /**
+     * Returns the singleton instance of the class
+     */
+    public static HomeController getInstance() {
+        if(homeController == null) {
+             homeController = new HomeController();
+        }
+        return homeController;
+    }
+    
+    protected HashMap<String, Appliance> getApplianceMap() {
+        return applianceMap;
     }
     
     /**
