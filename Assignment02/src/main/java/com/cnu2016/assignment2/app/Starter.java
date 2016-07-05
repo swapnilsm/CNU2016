@@ -36,6 +36,6 @@ public class Starter {
     
     public static void main(String args[]) {
         Starter starter = new Starter();
-        starter.controller("/tmp/testfile.txt");
+        starter.controller("/projects/Assignment02/testfile.txt");
     }
 }

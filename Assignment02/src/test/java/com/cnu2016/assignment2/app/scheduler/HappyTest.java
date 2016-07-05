@@ -54,7 +54,7 @@ public class HappyTest {
         
         // Then we generate an event
         Starter starter = new Starter();
-        starter.fileReader("/tmp/testfile.txt");
+        starter.fileReader("/projects/Assignment02/testfile.txt");
         
         // All events are executed
         Scheduler scheduler = Scheduler.getInstance();
