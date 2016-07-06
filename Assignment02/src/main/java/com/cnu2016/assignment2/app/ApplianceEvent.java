@@ -24,4 +24,12 @@ public class ApplianceEvent {
     public int getTime() {
         return this.time;
     }
+    
+    public Appliance getAppliance() {
+        return this.appliance;
+    }
+    
+    public State getState() {
+        return this.state;
+    }
 }

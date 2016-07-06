@@ -4,6 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import com.cnu2016.assignment2.app.State;
 
+/**
+ * A collection of helper functions that perform state change and
+ * no-state change tests for all applications
+ * 
+ * Does not contain standalone tests
+ */
 public class ApplianceTest {
         
     /**

@@ -11,7 +11,8 @@ import com.cnu2016.assignment2.app.scheduler.HomeController;
 import com.cnu2016.assignment2.app.scheduler.Scheduler;
 
 /**
- * Starter class contains main function to execute the program
+ * Starter class contains helper functions to read the events
+ * off a file, and the main function to execute the program
  */
 public class Starter {
     public void fileReader(String stringPath) {
@@ -28,7 +29,7 @@ public class Starter {
     
     public void controller(String stringPath) {
         HomeController homeController = HomeController.getInstance();
-        fileReader("/tmp/testfile.txt");
+        this.fileReader(stringPath);
         Scheduler scheduler = Scheduler.getInstance();
         while(scheduler.executeNextEvent())
             homeController.displayStatus();

@@ -6,12 +6,13 @@ import org.junit.Test;
 
 import com.cnu2016.assignment2.app.State;
 
+
+/**
+ * Tests whether the AC passes basic appliance tests as defined 
+ * in ApplianceTest
+ */
 public class AirConditionerTest {
     
-    /**
-     * Tests whether the AC passes the basic appliance and no change
-     * tests
-     */
     @Test
     public void airConditionerOnOffTests() {
         AirConditioner airconditioner = new AirConditioner();

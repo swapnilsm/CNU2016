@@ -1,5 +1,6 @@
 package com.cnu2016.assignment2.app.scheduler;
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 import com.cnu2016.assignment2.app.ApplianceEvent;
@@ -19,9 +20,12 @@ public class Scheduler {
     private int currentTime;
     
     /**
-     * Holds the list of all events, sorted by time
+     * Holds the list of all events, sorted by time.
+     * 
+     * Multiple events may occur at a single point in time. Stores
+     * multiple events as an ArrayList
      */
-    private TreeMap<Integer, ApplianceEvent> eventList;
+    private TreeMap<Integer, ArrayList<ApplianceEvent>> eventList;
     
     /**
      * (private) Constructor for Scheduler class. 
@@ -29,7 +33,7 @@ public class Scheduler {
      */
     private Scheduler() {
         currentTime = 0;
-        eventList = new TreeMap<Integer, ApplianceEvent>();
+        eventList = new TreeMap<Integer, ArrayList<ApplianceEvent>>();
     }
     
     /**
@@ -48,10 +52,12 @@ public class Scheduler {
         State nextState, int time) {
         ApplianceEvent applianceEvent = new ApplianceEvent(appliance, 
             time, nextState);
-        if(!eventList.isEmpty() && eventList.firstKey() > currentTime) {
+        if(!eventList.isEmpty() && eventList.firstKey() < currentTime) {
             //TODO: Throw an exception here
         } else {
-            eventList.put(time, applianceEvent);
+            if(!eventList.containsKey(time)) 
+                eventList.put(time, new ArrayList<ApplianceEvent>());
+            eventList.get(time).add(applianceEvent);
         }
     }
     
@@ -64,10 +70,15 @@ public class Scheduler {
     public boolean executeNextEvent() {
         if(eventList.isEmpty())
             return false;
-        ApplianceEvent executableEvent = eventList.firstEntry().getValue();
-        executableEvent.executeEvent();
+        ArrayList<ApplianceEvent> currentList = eventList.firstEntry().getValue();
+        ApplianceEvent executableEvent = currentList.get(0);
+        
         this.currentTime = executableEvent.getTime();
-        eventList.remove(this.currentTime);
+        executableEvent.executeEvent();
+        
+        currentList.remove(0);
+        if(currentList.size() == 0)
+            eventList.remove(this.currentTime);
         return true;
     }
     
@@ -78,5 +89,4 @@ public class Scheduler {
     public int getCurrentTime() {
         return this.currentTime;
     }
-    
 }

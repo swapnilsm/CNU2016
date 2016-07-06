@@ -1,0 +1,6 @@
+AC,4,ON
+AC,8,OFF
+Oven,4,ON
+Heater,4,ON
+Heater,16,OFF
+Oven,4,OFF

@@ -16,11 +16,13 @@ import com.cnu2016.assignment2.app.appliances.WaterHeater;
  * and manage all home appliances, we do not want multiple instances
  */
 public class HomeController {
+    
     /**
      * Maps the names of appliances to their object instances
      */
     private HashMap<String, Appliance> applianceMap;
     private static HomeController homeController;
+    
     /**
      * Initializes appliance map by mapping names of appliances
      * to their respective Appliance object instances
@@ -71,5 +73,7 @@ public class HomeController {
             Appliance appliance = applianceMap.get(applianceName);
             appliance.displayStatus();
         }
+        System.out.println("Time: " + 
+                Scheduler.getInstance().getCurrentTime());
     }
 }

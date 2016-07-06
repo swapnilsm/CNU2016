@@ -2,11 +2,12 @@ package com.cnu2016.assignment2.app.appliances;
 
 import org.junit.Test;
 
+/**
+ * Tests whether the water heater passes the basic appliance and no-change
+ * tests as specified in the ApplianceTest class
+ */
 public class WaterHeaterTest {
-    /**
-     * Tests whether the water heater passes the basic appliance and no-change
-     * tests
-     */
+
     @Test
     public void waterHeaterOnOffTests() {
         WaterHeater waterHeater = new WaterHeater();
