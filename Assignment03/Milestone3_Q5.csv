@@ -1,0 +1,10 @@
+Table,"Create Table"
+Order,"CREATE TABLE `Order` (
+  `idOrder` int(11) NOT NULL AUTO_INCREMENT,
+  `idUser` int(11) NOT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `orderDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`idOrder`),
+  KEY `idUser_idx` (`idUser`),
+  CONSTRAINT `idUser` FOREIGN KEY (`idUser`) REFERENCES `User` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3021 DEFAULT CHARSET=utf8"
